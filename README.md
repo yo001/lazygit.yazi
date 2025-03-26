@@ -25,5 +25,15 @@ add this to your **keymap.toml** file
 on   = [ "g", "i" ]
 run  = "plugin lazygit"
 desc = "run lazygit"
+
+[[manager.append_keymap]]
+on   = [ "g", "I" ]
+run  = 'plugin lazygit hover'
+desc = "run lazygit on the hovered directory."
+
+[[manager.append_keymap]]
+on   = [ ",", "l" ]
+run  = 'plugin lazygit auto'
+desc = "run lazygit in directory or on the hovered directory."
 ```
 you can customize the keybinding however you like. Please refer to the [keymap.toml](https://yazi-rs.github.io/docs/configuration/keymap) documentation
