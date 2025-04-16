@@ -1,3 +1,5 @@
+local permit = nil
+
 local get_hoverd_file = ya.sync(function()
 	local hovered = cx.active.current.hovered
 	return hovered.url, hovered.cha.is_dir
@@ -16,6 +18,11 @@ local function notify(title, content, level, timeout, show_notify)
 end
 
 local function run_lazygit(args, show_notify)
+	if permit ~= nil then
+		permit:drop()
+		permit = nil
+	end
+
 	permit = ya.hide()
 	local output, err_code = Command("lazygit"):args(args):stderr(Command.PIPED):output()
 	if err_code ~= nil then
