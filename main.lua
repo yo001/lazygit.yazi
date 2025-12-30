@@ -23,7 +23,7 @@ local function run_lazygit(args, show_notify)
 		permit = nil
 	end
 
-	permit = ya.hide()
+	permit = ui.hide and ui.hide() or ya.hide()
 	local output, err_code = Command("lazygit"):arg(args):stderr(Command.PIPED):output()
 	if err_code ~= nil then
 		notify("Failed to run lazygit command", "Status: " .. err_code, "error", nil, show_notify)
